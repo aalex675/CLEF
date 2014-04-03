@@ -1,5 +1,9 @@
 ﻿using System;
 using CLEF;
+using CLEF.Browsers;
+using CLEF.HelpPrinters;
+using CLEF.NameComparers;
+using CLEF.Parsers;
 
 namespace TestApp
 {
@@ -10,16 +14,16 @@ namespace TestApp
             args = new string[] { "SayHello", "-name=World" };
 
             // The IObjectBrowser tells the CommandMapper how to find Commands, CommandContainers (Verbs), and Global Options.
-            CLEF.Browsers.IObjectBrowser browser = new CLEF.Browsers.ReflectionObjectBrowser();
+            IObjectBrowser browser = new ReflectionObjectBrowser();
 
             // The INameComparer tells the CommandMapper how to determine whether a command line argument is equal to a Command, CommandContainer, or Global Option.
-            CLEF.NameComparers.INameComparer comparer = new CLEF.NameComparers.NameEquals(StringComparison.CurrentCulture);
+            INameComparer comparer = new NameEquals(StringComparison.CurrentCulture);
 
             // The IHelpPrinter prints the HelpContent when the help command is called.
-            CLEF.HelpPrinters.IHelpPrinter helpPrinter = new CLEF.HelpPrinters.DefaultHelpPrinter(15, "Application", new Version(1, 0));
+            IHelpPrinter helpPrinter = new DefaultHelpPrinter(15, "Application", new Version(1, 0));
 
             // The IArgumentParser is responsible for parsing the command line arguments into Argument objects.
-            CLEF.Parsers.IArgumentParser parser = new CLEF.Parsers.DefaultArgumentParser();
+            IArgumentParser parser = new DefaultArgumentParser();
 
             CommandMapper mapper = new CommandMapper(browser, comparer, helpPrinter, new string[] { "?" });
             IRunner runner = new Runner(parser, mapper);

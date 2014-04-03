@@ -14,10 +14,10 @@ namespace TestApp
     {
         public static int Main(string[] args)
         {
-            args = new string[] { "SayHello", "World" };
+            args = new string[] { "SayHello", "-name=World" };
 
             CLEF.Browsers.IObjectBrowser browser = new CLEF.Browsers.ReflectionObjectBrowser();
-            CLEF.NameComparers.INameComparer comparer = new CLEF.NameComparers.NameStartsWith(StringComparison.InvariantCultureIgnoreCase);
+            CLEF.NameComparers.INameComparer comparer = new CLEF.NameComparers.NameEquals(StringComparison.CurrentCulture);
             CLEF.HelpPrinters.IHelpPrinter helpPrinter = new CLEF.HelpPrinters.DefaultHelpPrinter(15, "Application", new Version(1, 0));
             CLEF.Parsers.IArgumentParser parser = new CLEF.Parsers.DefaultArgumentParser();
             CommandMapper mapper = new CommandMapper(browser, comparer, helpPrinter, new string[] { "?" });

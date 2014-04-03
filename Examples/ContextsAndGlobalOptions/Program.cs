@@ -5,13 +5,13 @@ using CLEF.HelpPrinters;
 using CLEF.NameComparers;
 using CLEF.Parsers;
 
-namespace TestApp
+namespace ContextsAndGlobalOptions
 {
     public class Program
     {
         public static int Main(string[] args)
         {
-            args = new string[] { "SayHello", "-name=World" };
+            args = new string[] { "Greet", "Hello", "-name=World", "-Title=Mr." };
 
             // The IObjectBrowser tells the CommandMapper how to find Verbs, VerbContainers, and Global Options.
             IObjectBrowser browser = new ReflectionObjectBrowser();
@@ -28,23 +28,12 @@ namespace TestApp
             CommandMapper mapper = new CommandMapper(browser, comparer, helpPrinter, new string[] { "?" });
             IRunner runner = new Runner(parser, mapper);
 
-            //ExecutionContext context = new ExecutionContext();
-            //int result = runner.Execute<ExecutionContext>(context, args);
-
             ComplexContext complexContext = new ComplexContext();
-            int result = runner.Execute<ComplexContext>(complexContext, new string[] { "Greet", "Hello", "World", "-Title=Mr." });
+            int result = runner.Execute<ComplexContext>(complexContext, args);
 
             Console.ReadKey(true);
 
             return result;
-        }
-
-        public class ExecutionContext
-        {
-            public void SayHello(string name)
-            {
-                Console.WriteLine("Hello " + name);
-            }
         }
 
         public class ComplexContext

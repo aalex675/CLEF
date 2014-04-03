@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{383710D9-7ED8-41CE-A51B-C85AD7385466}</ProjectGuid>
+    <ProjectGuid>{423720A0-876A-4065-9F58-D6A96B3B6E3A}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TestApp</RootNamespace>
-    <AssemblyName>TestApp</AssemblyName>
+    <RootNamespace>ContextsAndGlobalOptions</RootNamespace>
+    <AssemblyName>ContextsAndGlobalOptions</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -45,7 +45,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CLEF\CLEF.csproj">
+    <ProjectReference Include="..\..\CLEF\CLEF.csproj">
       <Project>{a4459bed-f171-4c0e-9aa6-c455e0cc8dd7}</Project>
       <Name>CLEF</Name>
     </ProjectReference>

@@ -3,11 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLEF", "CLEF\CLEF.csproj", "{A4459BED-F171-4C0E-9AA6-C455E0CC8DD7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp\TestApp.csproj", "{383710D9-7ED8-41CE-A51B-C85AD7385466}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLEF.Tests", "CLEF.Tests\CLEF.Tests.csproj", "{82C925D9-6B01-4A00-8A46-9194D906CA05}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{E10346E8-C29D-4233-B634-37D6DF122501}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{065C3476-C855-47DA-979D-65D098F78A98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorld", "Examples\HelloWorld\HelloWorld.csproj", "{CE7AFC35-C004-4037-ADDF-036BDACF291E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContextsAndGlobalOptions", "Examples\ContextsAndGlobalOptions\ContextsAndGlobalOptions.csproj", "{423720A0-876A-4065-9F58-D6A96B3B6E3A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{85AABE2C-7227-4462-B9E7-99BB635D98FA}"
 	ProjectSection(SolutionItems) = preProject
 		LICENSE = LICENSE
 		README.md = README.md
@@ -23,16 +27,24 @@ Global
 		{A4459BED-F171-4C0E-9AA6-C455E0CC8DD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4459BED-F171-4C0E-9AA6-C455E0CC8DD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4459BED-F171-4C0E-9AA6-C455E0CC8DD7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{383710D9-7ED8-41CE-A51B-C85AD7385466}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{383710D9-7ED8-41CE-A51B-C85AD7385466}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{383710D9-7ED8-41CE-A51B-C85AD7385466}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{383710D9-7ED8-41CE-A51B-C85AD7385466}.Release|Any CPU.Build.0 = Release|Any CPU
 		{82C925D9-6B01-4A00-8A46-9194D906CA05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{82C925D9-6B01-4A00-8A46-9194D906CA05}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82C925D9-6B01-4A00-8A46-9194D906CA05}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82C925D9-6B01-4A00-8A46-9194D906CA05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE7AFC35-C004-4037-ADDF-036BDACF291E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE7AFC35-C004-4037-ADDF-036BDACF291E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE7AFC35-C004-4037-ADDF-036BDACF291E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE7AFC35-C004-4037-ADDF-036BDACF291E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{423720A0-876A-4065-9F58-D6A96B3B6E3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{423720A0-876A-4065-9F58-D6A96B3B6E3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{423720A0-876A-4065-9F58-D6A96B3B6E3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{423720A0-876A-4065-9F58-D6A96B3B6E3A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CE7AFC35-C004-4037-ADDF-036BDACF291E} = {065C3476-C855-47DA-979D-65D098F78A98}
+		{423720A0-876A-4065-9F58-D6A96B3B6E3A} = {065C3476-C855-47DA-979D-65D098F78A98}
 	EndGlobalSection
 EndGlobal

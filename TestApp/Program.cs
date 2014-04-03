@@ -1,9 +1,5 @@
 ﻿using System;
 using CLEF;
-using CLEF.Browsers;
-using CLEF.HelpPrinters;
-using CLEF.NameComparers;
-using CLEF.Parsers;
 
 namespace TestApp
 {
@@ -11,16 +7,17 @@ namespace TestApp
     {
         public static int Main(string[] args)
         {
-            int number = 1;
-            foreach (string arg in args)
-            {
-                Console.WriteLine("#{0}: {1}", number++, arg);
-            }
+            args = new string[] { "SayHello", "World" };
 
-            CommandMapper mapper = new CommandMapper(new ReflectionObjectBrowser(), new NameStartsWith(StringComparison.InvariantCultureIgnoreCase), new DefaultHelpPrinter(12, "Test Application", new Version(1, 2, 3, 4)), new string[] { "?" });
-            IRunner runner = new Runner(new ArgumentParserStandard(), mapper);
+            CLEF.Browsers.IObjectBrowser browser = new CLEF.Browsers.ReflectionObjectBrowser();
+            CLEF.NameComparers.INameComparer comparer = new CLEF.NameComparers.NameStartsWith(StringComparison.InvariantCultureIgnoreCase);
+            CLEF.HelpPrinters.IHelpPrinter helpPrinter = new CLEF.HelpPrinters.DefaultHelpPrinter(15, "Application", new Version(1, 0));
+            CLEF.Parsers.IArgumentParser parser = new CLEF.Parsers.DefaultArgumentParser();
+            CommandMapper mapper = new CommandMapper(browser, comparer, helpPrinter, new string[] { "?" });
+            IRunner runner = new Runner(parser, mapper);
+
             ExecutionContext context = new ExecutionContext();
-            int result = runner.Execute<ExecutionContext>(context, new string[] { "?" });
+            int result = runner.Execute<ExecutionContext>(context, args);
 
             Console.ReadKey(true);
 
@@ -34,26 +31,18 @@ namespace TestApp
                 this.Greet = new NestedContext();
             }
 
-            public bool Test { get; set; }
-
-            public string String { get; set; }
+            public bool IsTest { get; set; }
 
             public NestedContext Greet { get; set; }
 
-            public void SayHello(string name, bool isCool)
+            public void SayHello(string name)
             {
-                if (this.Test)
+                if (this.IsTest)
                 {
                     Console.WriteLine("Test");
                 }
 
-                Console.WriteLine(this.String);
-
                 Console.WriteLine("Hello " + name);
-                if (isCool)
-                {
-                    Console.WriteLine("You're cool!");
-                }
             }
         }
 

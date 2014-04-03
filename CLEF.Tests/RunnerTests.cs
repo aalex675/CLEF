@@ -19,8 +19,8 @@ namespace CLEF.Tests
         [TestInitialize]
         public void Initialize()
         {
-            this.runner = new Runner(new ArgumentParserDefault(), new CommandMapper(new ReflectionObjectBrowser(), new NameStartsWith(StringComparison.InvariantCultureIgnoreCase), new DefaultHelpPrinter(15, "Tests", new Version(1, 0)), new string[] { "?", "help" }));
-            this.attributeRunner = new Runner(new ArgumentParserDefault(), new CommandMapper(new AttributeObjectBrowser(), new NameStartsWith(StringComparison.InvariantCultureIgnoreCase), new DefaultHelpPrinter(15, "Tests", new Version(1, 0)), new string[] { "?", "help" }));
+            this.runner = new Runner(new DefaultArgumentParser(), new CommandMapper(new ReflectionObjectBrowser(), new NameStartsWith(StringComparison.InvariantCultureIgnoreCase), new DefaultHelpPrinter(15, "Tests", new Version(1, 0)), new string[] { "?", "help" }));
+            this.attributeRunner = new Runner(new DefaultArgumentParser(), new CommandMapper(new AttributeObjectBrowser(), new NameStartsWith(StringComparison.InvariantCultureIgnoreCase), new DefaultHelpPrinter(15, "Tests", new Version(1, 0)), new string[] { "?", "help" }));
         }
 
         [TestMethod]
@@ -140,7 +140,7 @@ namespace CLEF.Tests
         public void Shows_Help()
         {
             Mock<IHelpPrinter> helpPrinter = new Mock<IHelpPrinter>();
-            IRunner runner = new Runner(new ArgumentParserDefault(), new CommandMapper(new ReflectionObjectBrowser(), new NameStartsWith(StringComparison.InvariantCultureIgnoreCase), helpPrinter.Object, new string[] { "?", "Help" }));
+            IRunner runner = new Runner(new DefaultArgumentParser(), new CommandMapper(new ReflectionObjectBrowser(), new NameStartsWith(StringComparison.InvariantCultureIgnoreCase), helpPrinter.Object, new string[] { "?", "Help" }));
 
             Simple context = new Simple();
 
@@ -153,7 +153,7 @@ namespace CLEF.Tests
         public void Shows_Help_2()
         {
             Mock<IHelpPrinter> helpPrinter = new Mock<IHelpPrinter>();
-            IRunner runner = new Runner(new ArgumentParserDefault(), new CommandMapper(new ReflectionObjectBrowser(), new NameStartsWith(StringComparison.InvariantCultureIgnoreCase), helpPrinter.Object, new string[] { "?", "Help" }));
+            IRunner runner = new Runner(new DefaultArgumentParser(), new CommandMapper(new ReflectionObjectBrowser(), new NameStartsWith(StringComparison.InvariantCultureIgnoreCase), helpPrinter.Object, new string[] { "?", "Help" }));
 
             Simple context = new Simple();
 

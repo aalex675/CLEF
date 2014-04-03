@@ -15,14 +15,14 @@ namespace CLEF
     {
         private string[] helpCommandNames;
 
-        private IObjectBrowser commandFinder;
-        private INameComparer matcher;
+        private IObjectBrowser browser;
+        private INameComparer comparer;
         private IHelpPrinter helpPrinter;
 
-        public CommandMapper(IObjectBrowser commandFinder, INameComparer matcher, IHelpPrinter helpPrinter, string[] helpCommandNames)
+        public CommandMapper(IObjectBrowser browser, INameComparer comparer, IHelpPrinter helpPrinter, string[] helpCommandNames)
         {
-            this.commandFinder = commandFinder;
-            this.matcher = matcher;
+            this.browser = browser;
+            this.comparer = comparer;
             this.helpPrinter = helpPrinter;
             this.helpCommandNames = helpCommandNames;
         }
@@ -46,9 +46,9 @@ namespace CLEF
             {
                 Argument arg = argList[i];
 
-                if (arg.Value != null && this.commandFinder.CommandContainerExists(this.matcher, context.Type, context.Instance, arg.Value))
+                if (arg.Value != null && this.browser.CommandContainerExists(this.comparer, context.Type, context.Instance, arg.Value))
                 {
-                    context = this.commandFinder.FindCommandContainer(this.matcher, context.Type, context.Instance, arg.Value);
+                    context = this.browser.FindCommandContainer(this.comparer, context.Type, context.Instance, arg.Value);
                 }
                 else
                 {
@@ -73,9 +73,9 @@ namespace CLEF
                 // Do nothing
                 startIndex = argList.Count - 1;
             }
-            else if (this.commandFinder.CommandExists(this.matcher, container.Type, container.Instance, arg.Value))
+            else if (this.browser.CommandExists(this.comparer, container.Type, container.Instance, arg.Value))
             {
-                command = this.commandFinder.FindCommand(this.matcher, container.Type, container.Instance, arg.Value);
+                command = this.browser.FindCommand(this.comparer, container.Type, container.Instance, arg.Value);
             }
 
             endIndex = startIndex + 1;
@@ -86,7 +86,7 @@ namespace CLEF
         {
             string value = arg.Value ?? arg.Name;
 
-            if (helpCommand.IsMatch(this.matcher, value))
+            if (helpCommand.IsMatch(this.comparer, value))
             {
                 return true;
             }
@@ -96,7 +96,7 @@ namespace CLEF
 
         private void ParseArguments(ICommandContainer context, ICommand command, IList<Argument> argList, int startIndex)
         {
-            var globalOptions = this.commandFinder.FindGlobalOptions(context.Type, context.Instance).ToList();
+            var globalOptions = this.browser.FindGlobalOptions(context.Type, context.Instance).ToList();
             List<IOption> allOptions = command.Options.Union(globalOptions).ToList();
 
             for (int i = startIndex; i < argList.Count; i++)
@@ -119,10 +119,10 @@ namespace CLEF
 
             if (argument.Name != null)
             {
-                if (param.IsMatch(this.matcher, argument.Name) == false)
+                if (param.IsMatch(this.comparer, argument.Name) == false)
                 {
                     // Out of order option, check all options for a match
-                    param = options.FindMatchingItem(this.matcher, argument.Name);
+                    param = options.FindMatchingItem(this.comparer, argument.Name);
                 }
             }
 
@@ -176,9 +176,9 @@ namespace CLEF
             content.Type = type;
             content.Instance = instance;
 
-            content.GlobalOptions.AddRange(this.commandFinder.FindGlobalOptions(type, instance));
-            content.Commands.AddRange(this.commandFinder.FindAllCommands(type, instance));
-            foreach (var container in this.commandFinder.FindAllCommandContainers(type, instance))
+            content.GlobalOptions.AddRange(this.browser.FindGlobalOptions(type, instance));
+            content.Commands.AddRange(this.browser.FindAllCommands(type, instance));
+            foreach (var container in this.browser.FindAllCommandContainers(type, instance))
             {
                 HelpContent subContent = this.GetContent(container.Type, container.Instance);
                 subContent.Name = container.Name;

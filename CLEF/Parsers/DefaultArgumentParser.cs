@@ -6,7 +6,7 @@ using CLEF.Arguments;
 
 namespace CLEF.Parsers
 {
-    public class ArgumentParserDefault : IArgumentParser
+    public class DefaultArgumentParser : IArgumentParser
     {
         public readonly string[] ArgumentPrefixes = new string[] { "--", "-", "/" };
         public readonly string[] ArgumentValueSeparators = new string[] { "=", ":" };

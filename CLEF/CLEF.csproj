@@ -43,7 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Arguments\Argument.cs" />
-    <Compile Include="Parsers\ArgumentParserStandard.cs" />
+    <Compile Include="Parsers\StandardArgumentParser.cs" />
     <Compile Include="Attributes\CommandAttribute.cs" />
     <Compile Include="Attributes\CommandContainerAttribute.cs" />
     <Compile Include="Browsers\AttributeObjectBrowser.cs" />
@@ -69,7 +69,7 @@
     <Compile Include="NameComparers\NameStartsWith.cs" />
     <Compile Include="Extensions\NamedItemExtensions.cs" />
     <Compile Include="Commands\RelayOption.cs" />
-    <Compile Include="Parsers\ArgumentParserDefault.cs" />
+    <Compile Include="Parsers\DefaultArgumentParser.cs" />
     <Compile Include="Arguments\ArgumentType.cs" />
     <Compile Include="CommandMapper.cs" />
     <Compile Include="Parsers\IArgumentParser.cs" />

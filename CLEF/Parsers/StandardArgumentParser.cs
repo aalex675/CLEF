@@ -6,7 +6,7 @@ using CLEF.Arguments;
 
 namespace CLEF.Parsers
 {
-    public class ArgumentParserStandard : IArgumentParser
+    public class StandardArgumentParser : IArgumentParser
     {
         private readonly char[] validDashes = { '-', '‐', '‒', '–', '—', '―' };
         private readonly char valueSeparator = '=';

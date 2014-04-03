@@ -16,7 +16,7 @@ namespace CLEF.Tests.Arguments
         [TestInitialize]
         public void Initialize()
         {
-            this.parser = new ArgumentParserStandard();
+            this.parser = new StandardArgumentParser();
         }
 
         [TestMethod]

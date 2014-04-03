@@ -20,7 +20,7 @@ namespace CLEF.Tests
         public void Initialize()
         {
             this.mapper = new CommandMapper(new ReflectionObjectBrowser(), new NameStartsWith(StringComparison.InvariantCultureIgnoreCase), new DefaultHelpPrinter(15, "Test", new Version(1, 0)), new string[] { "?", "Help" });
-            this.parser = new ArgumentParserDefault();
+            this.parser = new DefaultArgumentParser();
         }
 
         [TestMethod]

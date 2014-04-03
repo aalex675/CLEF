@@ -14,7 +14,7 @@ namespace CLEF.Tests.Help
         public void TestMethod1()
         {
             DefaultHelpPrinter printer = new DefaultHelpPrinter(15, "Test", new Version(1, 0));
-            Runner runner = new Runner(new ArgumentParserDefault(), new CommandMapper(new ReflectionObjectBrowser(), new NameStartsWith(StringComparison.InvariantCultureIgnoreCase), printer, new string[] { "?" }));
+            Runner runner = new Runner(new DefaultArgumentParser(), new CommandMapper(new ReflectionObjectBrowser(), new NameStartsWith(StringComparison.InvariantCultureIgnoreCase), printer, new string[] { "?" }));
 
             using (var console = new ConsoleOutputTester(@"Help for Test v1.0
 Arguments:

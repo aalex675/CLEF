@@ -53,6 +53,10 @@ namespace HelloWorld
     }
 }
 ```
+Console Output:
+```
+Hello World
+```
 
 Here is a more complex example that utilizes nested verbs and global options:
 ```C#
@@ -132,4 +136,8 @@ namespace ContextsAndGlobalOptions
         }
     }
 }
+```
+Console Output:
+```
+Hello Mr. World
 ```

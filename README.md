@@ -18,7 +18,10 @@ namespace HelloWorld
     {
         public static int Main(string[] args)
         {
-            args = new string[] { "SayHello", "-name=World" };
+            if (args.Length == 0)
+            {
+                args = new string[] { "SayHello", "-name=World" };
+            }
 
             // The IObjectBrowser tells the CommandMapper how to find Verbs, VerbContainers, and Global Options.
             IObjectBrowser browser = new ReflectionObjectBrowser();
@@ -53,8 +56,9 @@ namespace HelloWorld
     }
 }
 ```
-Console Output:
+Console Usage:
 ```
+>HelloWorld.exe SayHello "World"
 Hello World
 ```
 
@@ -73,7 +77,10 @@ namespace ContextsAndGlobalOptions
     {
         public static int Main(string[] args)
         {
-            args = new string[] { "Greet", "Hello", "-name=World", "-Title=Mr." };
+            if (args.Length == 0)
+            {
+                args = new string[] { "Greet", "Hello", "-name=World", "-Title=Mr." };
+            }
 
             // The IObjectBrowser tells the CommandMapper how to find Verbs, VerbContainers, and Global Options.
             IObjectBrowser browser = new ReflectionObjectBrowser();
@@ -137,7 +144,8 @@ namespace ContextsAndGlobalOptions
     }
 }
 ```
-Console Output:
+Console Usage:
 ```
+>ContextsAndGlobalOptions.exe Greet Hello -name=World -Title=Mr.
 Hello Mr. World
 ```

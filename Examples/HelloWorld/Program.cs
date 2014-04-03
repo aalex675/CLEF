@@ -11,7 +11,10 @@ namespace HelloWorld
     {
         public static int Main(string[] args)
         {
-            args = new string[] { "SayHello", "-name=World" };
+            if (args.Length == 0)
+            {
+                args = new string[] { "SayHello", "-name=World" };
+            }
 
             // The IObjectBrowser tells the CommandMapper how to find Verbs, VerbContainers, and Global Options.
             IObjectBrowser browser = new ReflectionObjectBrowser();

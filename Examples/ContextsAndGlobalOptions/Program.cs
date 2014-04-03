@@ -11,7 +11,10 @@ namespace ContextsAndGlobalOptions
     {
         public static int Main(string[] args)
         {
-            args = new string[] { "Greet", "Hello", "-name=World", "-Title=Mr." };
+            if (args.Length == 0)
+            {
+                args = new string[] { "Greet", "Hello", "-name=World", "-Title=Mr." };
+            }
 
             // The IObjectBrowser tells the CommandMapper how to find Verbs, VerbContainers, and Global Options.
             IObjectBrowser browser = new ReflectionObjectBrowser();

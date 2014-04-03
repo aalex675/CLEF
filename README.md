@@ -53,3 +53,49 @@ namespace TestApp
     }
 }
 ```
+
+// For a more complex example you can replace the ExecutionContext class with:
+```C#
+
+        public class ComplexContext
+        {
+            public ComplexContext()
+            {
+                this.Greet = new NestedContext();
+            }
+
+            public NestedContext Greet { get; set; }
+        }
+
+        public class NestedContext
+        {
+            public string Title { get; set; }
+
+            public void Hello(string name)
+            {
+                Console.WriteLine("Hello " + this.GetNameWithTitle(name));
+            }
+
+            public void Hi(string name)
+            {
+                Console.WriteLine("Hi " + this.GetNameWithTitle(name));
+            }
+
+            private string GetNameWithTitle(string name)
+            {
+                if (this.Title != null)
+                {
+                    return string.Join(" ", this.Title, name);
+                }
+                else
+                {
+                    return name;
+                }
+            }
+        }
+```
+and then replace the context and Execute calls from the Hello World example with this:
+```C#
+            ComplexContext complexContext = new ComplexContext();
+            int result = runner.Execute<ComplexContext>(complexContext, new string[] { "Greet", "Hello", "World", "-Title=Mr." });
+```

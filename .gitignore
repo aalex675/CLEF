@@ -1,0 +1,15 @@
+# [Oo]bj/
+# [Bb]in/
+
+[Oo]bj/
+[Bb]in/
+[Dd]ebug/
+[Rr]elease/
+[Pp]ublish/
+StyleCop.Cache
+*.suo
+*.user
+*.sln.cache
+TestResults/
+~$_*.doc
+packages/

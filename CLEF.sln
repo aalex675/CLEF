@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLEF", "CLEF\CLEF.csproj", "{A4459BED-F171-4C0E-9AA6-C455E0CC8DD7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp\TestApp.csproj", "{383710D9-7ED8-41CE-A51B-C85AD7385466}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLEF.Tests", "CLEF.Tests\CLEF.Tests.csproj", "{82C925D9-6B01-4A00-8A46-9194D906CA05}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A4459BED-F171-4C0E-9AA6-C455E0CC8DD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4459BED-F171-4C0E-9AA6-C455E0CC8DD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4459BED-F171-4C0E-9AA6-C455E0CC8DD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4459BED-F171-4C0E-9AA6-C455E0CC8DD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{383710D9-7ED8-41CE-A51B-C85AD7385466}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{383710D9-7ED8-41CE-A51B-C85AD7385466}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{383710D9-7ED8-41CE-A51B-C85AD7385466}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{383710D9-7ED8-41CE-A51B-C85AD7385466}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82C925D9-6B01-4A00-8A46-9194D906CA05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82C925D9-6B01-4A00-8A46-9194D906CA05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82C925D9-6B01-4A00-8A46-9194D906CA05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82C925D9-6B01-4A00-8A46-9194D906CA05}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

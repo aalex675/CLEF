@@ -6,9 +6,9 @@ using System.Text;
 namespace CLEF
 {
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
-    public class CommandContainerAttribute : Attribute
+    public class VerbContainerAttribute : Attribute
     {
-        public CommandContainerAttribute(string name, string description, params string[] alternateNames)
+        public VerbContainerAttribute(string name, string description, params string[] alternateNames)
         {
             this.Name = name;
             this.Description = description;

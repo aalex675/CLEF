@@ -44,8 +44,8 @@
   <ItemGroup>
     <Compile Include="Arguments\Argument.cs" />
     <Compile Include="Parsers\StandardArgumentParser.cs" />
-    <Compile Include="Attributes\CommandAttribute.cs" />
-    <Compile Include="Attributes\CommandContainerAttribute.cs" />
+    <Compile Include="Attributes\VerbAttribute.cs" />
+    <Compile Include="Attributes\VerbContainerAttribute.cs" />
     <Compile Include="Browsers\AttributeObjectBrowser.cs" />
     <Compile Include="Extensions\ObjectBrowserExtensions.cs" />
     <Compile Include="Browsers\IObjectBrowser.cs" />

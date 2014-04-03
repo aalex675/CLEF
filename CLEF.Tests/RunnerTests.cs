@@ -232,14 +232,14 @@ namespace CLEF.Tests
             [Option("Global", "Global Option")]
             public virtual bool Global { get; set; }
 
-            [Command("With1Arg", "With 1 Argument")]
+            [Verb("With1Arg", "With 1 Argument")]
             public virtual void With1Arg(
                 [Option("value", "Value")]
                 bool value)
             {
             }
 
-            [Command("Go", "Go Command")]
+            [Verb("Go", "Go Command")]
             public virtual void Go()
             {
             }

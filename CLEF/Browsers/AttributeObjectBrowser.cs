@@ -33,7 +33,7 @@ namespace CLEF.Browsers
                     IList<string> alternateNames = new List<string>();
                     string description = string.Empty;
 
-                    var attribute = property.GetCustomAttributes(true).OfType<CommandContainerAttribute>().FirstOrDefault();
+                    var attribute = property.GetCustomAttributes(true).OfType<VerbContainerAttribute>().FirstOrDefault();
                     if (attribute != null)
                     {
                         name = attribute.Name;
@@ -97,11 +97,11 @@ namespace CLEF.Browsers
                 methods = type.GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly).Where(m => m.IsSpecialName == false);
             }
 
-            methods = methods.Where(m => m.GetCustomAttributes(true).OfType<CommandAttribute>().Count() > 0);
+            methods = methods.Where(m => m.GetCustomAttributes(true).OfType<VerbAttribute>().Count() > 0);
 
             foreach (var method in methods)
             {
-                var attribute = method.GetCustomAttributes(true).OfType<CommandAttribute>().FirstOrDefault();
+                var attribute = method.GetCustomAttributes(true).OfType<VerbAttribute>().FirstOrDefault();
                 if (attribute != null)
                 {
                     List<IOption> options = new List<IOption>();

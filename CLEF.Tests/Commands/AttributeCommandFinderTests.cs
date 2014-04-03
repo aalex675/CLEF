@@ -131,10 +131,10 @@ namespace CLEF.Tests.Commands
             [Option("Global", "Global Option that does something")]
             public bool GlobalA { get; set; }
 
-            [CommandContainer("Do", "Container for Do Commands")]
+            [VerbContainer("Do", "Container for Do Commands")]
             public Nested DoA { get; set; }
 
-            [Command("Go", "Does Something")]
+            [Verb("Go", "Does Something")]
             public void GoA()
             {
             }
@@ -150,10 +150,10 @@ namespace CLEF.Tests.Commands
             [Option("Global2", "Global Option that does something")]
             public bool GlobalA2 { get; set; }
 
-            [CommandContainer("Do2", "Container for Do2 Commands")]
+            [VerbContainer("Do2", "Container for Do2 Commands")]
             public Nested DoA2 { get; set; }
 
-            [Command("Go2", "Does Something Else")]
+            [Verb("Go2", "Does Something Else")]
             public void GoA2()
             {
             }
@@ -161,7 +161,7 @@ namespace CLEF.Tests.Commands
 
         private class Nested
         {
-            [Command("Test", "Test Method with option")]
+            [Verb("Test", "Test Method with option")]
             public void TestA(
                 [Option("option1", "Int option")]
                 int optionA1)
@@ -174,10 +174,10 @@ namespace CLEF.Tests.Commands
             [Option("Global", "Global Option that does something")]
             public static bool GlobalA { get; set; }
 
-            [CommandContainer("Do", "Container for Do Commands")]
+            [VerbContainer("Do", "Container for Do Commands")]
             public static StaticNested DoA { get; set; }
 
-            [Command("Go", "Does Something")]
+            [Verb("Go", "Does Something")]
             public static void GoA()
             {
             }
@@ -185,7 +185,7 @@ namespace CLEF.Tests.Commands
 
         private class StaticNested
         {
-            [Command("Test", "Test Method with option")]
+            [Verb("Test", "Test Method with option")]
             public static void TestA(
                 [Option("option1", "Int option")]
                 int optionA1)

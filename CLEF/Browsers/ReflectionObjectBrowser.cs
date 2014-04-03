@@ -8,7 +8,7 @@ using CLEF.Commands;
 namespace CLEF.Browsers
 {
     /// <summary>
-    /// Discovers Commands, Containers, and Global Options using reflection.
+    /// Discovers Verbs, Containers, and Global Options using reflection.
     /// </summary>
     public class ReflectionObjectBrowser : IObjectBrowser
     {

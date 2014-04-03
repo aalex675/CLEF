@@ -8,7 +8,7 @@ using CLEF.Commands;
 namespace CLEF.Browsers
 {
     /// <summary>
-    /// Discovers Commands, Containers, and Global Options using Attributes.
+    /// Discovers Verbs, Containers, and Global Options using Attributes.
     /// </summary>
     public class AttributeObjectBrowser : IObjectBrowser
     {

@@ -13,7 +13,7 @@ namespace TestApp
         {
             args = new string[] { "SayHello", "-name=World" };
 
-            // The IObjectBrowser tells the CommandMapper how to find Commands, CommandContainers (Verbs), and Global Options.
+            // The IObjectBrowser tells the CommandMapper how to find Verbs, VerbContainers, and Global Options.
             IObjectBrowser browser = new ReflectionObjectBrowser();
 
             // The INameComparer tells the CommandMapper how to determine whether a command line argument is equal to a Command, CommandContainer, or Global Option.

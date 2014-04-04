@@ -48,21 +48,21 @@ Hello World
 Architecture
 ===
 - **IRunner** - Runs the arguments against the specified object instance or Type in the case of static methods.
-    - **Runner**(Default)
+    - **Runner***(Default)*
         - Dependencies:
             - **ICommandMapper** - Maps the arguments to the correct command and parameters on the object instance.
-                - **CommandMapper**(Default)
+                - **CommandMapper***(Default)*
                     - Dependencies:
                         - **IObjectBrowser** - Browses the object type for Commands (Verbs), Command Containers, and Global Options.
                             - **AttributeObjectBrowser** - Uses VerbAttribute, VerbContainerAttribute, and Option attributes for discovery.
-                            - **ReflectionObjectBrowser**(Default) - Uses Reflection for discovery. Public methods become Verbs, Public Properties of Non-System Types are Command Containers, and Public Properties of System Types are Global Options.
+                            - **ReflectionObjectBrowser***(Default)* - Uses Reflection for discovery. Public methods become Verbs, Public Properties of Non-System Types are Command Containers, and Public Properties of System Types are Global Options.
                         - **INameComparer** - Compares argument names with Verb, Verb Container, and Option names to determine matches.
                             - **NameEquals** - Determines if argument names are equal to Command, Container, or Option names.
-                            - **NameStartsWith**(Default) - Determines if Command, Container, or Option names start with the argument name.
+                            - **NameStartsWith***(Default)* - Determines if Command, Container, or Option names start with the argument name.
                         - **IHelpPrinter** - Prints the Help text if the user passes in a help command prefix.
-                            - **DefaultHelpPrinter**(Default) - Prints the help information to the console.
+                            - **DefaultHelpPrinter***(Default)* - Prints the help information to the console.
             - **IArgumentParser** - Parses the command line arguments into Argument objects.
-                - **DefaultArgumentParser**(Default) - Any dash or forward slash is a prefix for an argument name. '=' or ':' are valid value separators.
+                - **DefaultArgumentParser***(Default)* - Any dash or forward slash is a prefix for an argument name. '=' or ':' are valid value separators.
                 - **StandardArgumentParser** - A single dash is a prefix for a single character shortname. A double dash is a prefix for a long name. Multiple shortnames can be joined together (Ex. '-test' is the same as '-t -e -s -t')
 
 Here is a more complex example that utilizes nested verbs and global options:

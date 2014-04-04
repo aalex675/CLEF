@@ -19,7 +19,7 @@ namespace CLEF
         private INameComparer comparer;
         private IHelpPrinter helpPrinter;
 
-        public CommandMapper(IObjectBrowser browser, INameComparer comparer, IHelpPrinter helpPrinter, string[] helpCommandNames)
+        public CommandMapper(IObjectBrowser browser, INameComparer comparer, IHelpPrinter helpPrinter, params string[] helpCommandNames)
         {
             this.browser = browser;
             this.comparer = comparer;

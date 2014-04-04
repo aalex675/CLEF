@@ -55,7 +55,10 @@ Architecture
                     - Dependencies:
                         - **IObjectBrowser** - Browses the object type for Commands (Verbs), Command Containers, and Global Options.
                             - **AttributeObjectBrowser** - Uses VerbAttribute, VerbContainerAttribute, and OptionAttribute attributes for discovery.
-                            - **ReflectionObjectBrowser** *(Default)* - Uses Reflection for discovery. Public methods become Verbs, Public Properties of Non-System Types are Command Containers, and Public Properties of System Types are Global Options.
+                            - **ReflectionObjectBrowser** *(Default)* - Uses Reflection for discovery.
+								- Public Methods = Verbs
+								- Public Properties of non-system types = Verb Containers
+								- Public Properties of system types = Global Options
                         - **INameComparer** - Compares argument names with Verb, Verb Container, and Option names to determine matches.
                             - **NameEquals** - Determines if argument names are equal to Command, Container, or Option names.
                             - **NameStartsWith** *(Default)* - Determines if Command, Container, or Option names start with the argument name.

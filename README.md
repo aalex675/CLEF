@@ -139,6 +139,8 @@ Console Usage:
 Hello Mr. World
 >ContextsAndGlobalOptions.exe g hello -n=World -t=Mr.
 Hello Mr. World
+>ContextsAndGlobalOptions.exe g hello -n=World
+Hello World
 ```
 The second call works because the default INameMatcher is an instance of NameStartsWith that is case insensitive so 'g' matches 'Greet' and '-t' matches 'Title'.
 

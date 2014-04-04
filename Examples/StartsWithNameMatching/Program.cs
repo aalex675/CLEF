@@ -1,7 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using CLEF;
+using CLEF.Browsers;
+using CLEF.HelpPrinters;
+using CLEF.NameComparers;
+using CLEF.Parsers;
 
-namespace ContextsAndGlobalOptions
+namespace StartsWithNameMatching
 {
     public class Program
     {
@@ -9,7 +16,7 @@ namespace ContextsAndGlobalOptions
         {
             if (args.Length == 0)
             {
-                args = new string[] { "Greet", "Hello", "-name=World", "-Title=Mr." };
+                args = new string[] { "G", "Hello", "-n=World", "-T=Mr." };
             }
 
             IRunner runner = new Runner();

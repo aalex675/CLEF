@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using CLEF.Arguments;
 using CLEF.Commands;
@@ -12,6 +13,17 @@ namespace CLEF
     {
         private IArgumentParser parser;
         private ICommandMapper mapper;
+
+        public Runner()
+        {
+            this.parser = new DefaultArgumentParser();
+            var currentProgramName = Assembly.GetEntryAssembly().GetName();
+            this.mapper = new CommandMapper(
+                new Browsers.ReflectionObjectBrowser(),
+                new NameComparers.NameStartsWith(StringComparison.InvariantCultureIgnoreCase),
+                new HelpPrinters.DefaultHelpPrinter(15, currentProgramName.Name, currentProgramName.Version),
+                new string[] { "?", "Help" });
+        }
 
         public Runner(IArgumentParser parser, ICommandMapper mapper)
         {

@@ -3,14 +3,10 @@ CLEF
 
 Command Line Execution Framework is a command line parsing library. It's purpose is to map command line arguments to functions.
 
-Here is a very complicated way to print Hello World to the console:
+Hello World Example
 ```C#
 using System;
 using CLEF;
-using CLEF.Browsers;
-using CLEF.HelpPrinters;
-using CLEF.NameComparers;
-using CLEF.Parsers;
 
 namespace HelloWorld
 {
@@ -23,20 +19,7 @@ namespace HelloWorld
                 args = new string[] { "SayHello", "-name=World" };
             }
 
-            // The IObjectBrowser tells the CommandMapper how to find Verbs, VerbContainers, and Global Options.
-            IObjectBrowser browser = new ReflectionObjectBrowser();
-
-            // The INameComparer tells the CommandMapper how to determine whether a command line argument is equal to a Command, CommandContainer, or Global Option.
-            INameComparer comparer = new NameEquals(StringComparison.CurrentCulture);
-
-            // The IHelpPrinter prints the HelpContent when the help command is called.
-            IHelpPrinter helpPrinter = new DefaultHelpPrinter(15, "Application", new Version(1, 0));
-
-            // The IArgumentParser is responsible for parsing the command line arguments into Argument objects.
-            IArgumentParser parser = new DefaultArgumentParser();
-
-            CommandMapper mapper = new CommandMapper(browser, comparer, helpPrinter, new string[] { "?" });
-            IRunner runner = new Runner(parser, mapper);
+            IRunner runner = new Runner();
 
             ExecutionContext context = new ExecutionContext();
             int result = runner.Execute<ExecutionContext>(context, args);
@@ -62,14 +45,29 @@ Console Usage:
 Hello World
 ```
 
+Architecture
+===
+IRunner - Runs the arguments against the specified object instance or Type in the case of static methods.
+	Runner(Default)
+		Dependencies:
+			ICommandMapper - Maps the arguments to the correct command and parameters on the object instance.
+				CommandMapper(Default)
+					Dependencies:
+						IObjectBrowser - Browses the object type for Commands (Verbs), Command Containers, and Global Options.
+							AttributeObjectBrowser - Uses VerbAttribute, VerbContainerAttribute, and Option attributes for discovery.
+							ReflectionObjectBrowser(Default) - Uses Reflection for discovery. Public methods become Verbs, Public Properties of Non-System Types are Command Containers, and Public Properties of System Types are Global Options.
+						INameComparer - Compares argument names with Verb, Verb Container, and Option names to determine matches.
+							NameEquals - Determines if argument names are equal to Command, Container, or Option names.
+							NameStartsWith(Default) - Determines if Command, Container, or Option names start with the argument name.
+						IHelpPrinter - Prints the Help text if the user passes in a help command prefix.
+							DefaultHelpPrinter(Default) - Prints the help information to the console.
+			IArgumentParser - Parses the command line arguments into Argument objects.
+				DefaultArgumentParser(Default) - 
+
 Here is a more complex example that utilizes nested verbs and global options:
 ```C#
 using System;
 using CLEF;
-using CLEF.Browsers;
-using CLEF.HelpPrinters;
-using CLEF.NameComparers;
-using CLEF.Parsers;
 
 namespace ContextsAndGlobalOptions
 {
@@ -82,20 +80,7 @@ namespace ContextsAndGlobalOptions
                 args = new string[] { "Greet", "Hello", "-name=World", "-Title=Mr." };
             }
 
-            // The IObjectBrowser tells the CommandMapper how to find Verbs, VerbContainers, and Global Options.
-            IObjectBrowser browser = new ReflectionObjectBrowser();
-
-            // The INameComparer tells the CommandMapper how to determine whether a command line argument is equal to a Command, CommandContainer, or Global Option.
-            INameComparer comparer = new NameEquals(StringComparison.CurrentCulture);
-
-            // The IHelpPrinter prints the HelpContent when the help command is called.
-            IHelpPrinter helpPrinter = new DefaultHelpPrinter(15, "Application", new Version(1, 0));
-
-            // The IArgumentParser is responsible for parsing the command line arguments into Argument objects.
-            IArgumentParser parser = new DefaultArgumentParser();
-
-            CommandMapper mapper = new CommandMapper(browser, comparer, helpPrinter, new string[] { "?" });
-            IRunner runner = new Runner(parser, mapper);
+            IRunner runner = new Runner();
 
             ComplexContext complexContext = new ComplexContext();
             int result = runner.Execute<ComplexContext>(complexContext, args);
@@ -148,4 +133,7 @@ Console Usage:
 ```
 >ContextsAndGlobalOptions.exe Greet Hello -name=World -Title=Mr.
 Hello Mr. World
+>ContextsAndGlobalOptions.exe g hello -n=World -t=Mr.
+Hello Mr. World
 ```
+The second call works because the default INameMatcher is an instance of NameStartsWith that is case insensitive so 'g' matches 'Greet' and '-t' matches 'Title'.

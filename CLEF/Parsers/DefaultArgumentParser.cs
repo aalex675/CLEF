@@ -8,7 +8,7 @@ namespace CLEF.Parsers
 {
     public class DefaultArgumentParser : IArgumentParser
     {
-        public readonly string[] ArgumentPrefixes = new string[] { "--", "-", "/" };
+        public readonly char[] ArgumentPrefixes = new char[] { '-', '‐', '‒', '–', '—', '―', '/' };
         public readonly string[] ArgumentValueSeparators = new string[] { "=", ":" };
 
         public IEnumerable<Argument> GetArguments(string[] args)
@@ -40,9 +40,9 @@ namespace CLEF.Parsers
 
         private bool IsNamedParameter(string arg)
         {
-            foreach (string prefix in this.ArgumentPrefixes)
+            foreach (var prefix in this.ArgumentPrefixes)
             {
-                if (arg.StartsWith(prefix))
+                if (arg.StartsWith(prefix.ToString()))
                 {
                     return true;
                 }
@@ -87,14 +87,8 @@ namespace CLEF.Parsers
         private string CleanName(string arg)
         {
             string name = arg;
-            foreach (string prefix in this.ArgumentPrefixes)
-            {
-                if (name.StartsWith(prefix))
-                {
-                    name = name.Substring(prefix.Length);
-                    break;
-                }
-            }
+
+            name = name.TrimStart(this.ArgumentPrefixes);
 
             return name;
         }

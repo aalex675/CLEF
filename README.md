@@ -1,7 +1,7 @@
 CLEF
 ====
 
-Command Line Execution Framework is a command line parsing library. It's purpose is to map command line arguments to functions.
+Command Line Execution Framework is a command line parsing library. Its purpose is to map command line arguments to functions.
 
 Hello World Example
 ```C#

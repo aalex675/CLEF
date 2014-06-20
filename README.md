@@ -74,11 +74,6 @@ namespace ContextsAndGlobalOptions
     {
         public static int Main(string[] args)
         {
-            if (args.Length == 0)
-            {
-                args = new string[] { "Greet", "Hello", "-name=World", "-Title=Mr." };
-            }
-
             IRunner runner = new Runner();
 
             ComplexContext complexContext = new ComplexContext();
@@ -154,11 +149,6 @@ namespace AttributeExample
     {
         public static void Main(string[] args)
         {
-            if (args.Length == 0)
-            {
-                args = new string[] { "Math", "Add", "-1=100", "-2=50" };
-            }
-
             IRunner runner = new Runner(
                 new DefaultArgumentParser(),
                 new CommandMapper(

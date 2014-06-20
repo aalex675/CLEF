@@ -14,11 +14,6 @@ namespace HelloWorld
     {
         public static int Main(string[] args)
         {
-            if (args.Length == 0)
-            {
-                args = new string[] { "SayHello", "-name=World" };
-            }
-
             IRunner runner = new Runner();
 
             ExecutionContext context = new ExecutionContext();
